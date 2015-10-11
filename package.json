@@ -1,6 +1,6 @@
 {
   "name": "binary-cg",
-  "version": "0.1.0",
+  "version": "0.1.0-pre",
   "description": "Binary Card Game engine",
   "main": "src/index",
   "scripts": {
