@@ -39,10 +39,10 @@ export interface Grid {
 	Twenty: Array<Card>;
 	Thirty: Array<Card>;
 	Forty: Array<Card>;
-	Fifty: Array
+	Fifty: Array<Card>;
 }
 
 export interface Row {
 	cards: Array<Card>;
-	owner: 
+	owner: Player; 
 }
