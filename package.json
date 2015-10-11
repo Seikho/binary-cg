@@ -1,0 +1,30 @@
+{
+  "name": "binary-cg",
+  "version": "0.1.0",
+  "description": "Binary Card Game engine",
+  "main": "src/index",
+  "scripts": {
+    "test": "mocha",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seikho/binary-cg.git"
+  },
+  "keywords": [
+    "card",
+    "game",
+    "engine"
+  ],
+  "author": "Carl Winkler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seikho/binary-cg/issues"
+  },
+  "homepage": "https://github.com/seikho/binary-cg#readme",
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3",
+    "typescript": "^1.6.2"
+  }
+}
