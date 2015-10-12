@@ -7,11 +7,14 @@ export import Direction = Enum.Direction;
 
 export import Player = Enum.Player;
 
-export interface Card {
+export interface PlayerCard extends Card {
 	owner: Player;
+	effect: () => void;
+}
+
+export interface Card {
 	command: Command;
 	direction: Direction;
-	effect: () => void;
 }
 
 export class Game {
@@ -20,18 +23,18 @@ export class Game {
 
 export interface Deck {
 	owner: Player;
-	cards: Obs.ObservableArray<Card>;
+	cards: Obs.ObservableArray<PlayerCard>;
 }
 
 export interface Grid {
-	Ten: Obs.ObservableArray<Card>;
-	Twenty: Obs.ObservableArray<Card>;
-	Thirty: Obs.ObservableArray<Card>;
-	Forty: Obs.ObservableArray<Card>;
-	Fifty: Obs.ObservableArray<Card>;
+	Ten: Obs.ObservableArray<PlayerCard>;
+	Twenty: Obs.ObservableArray<PlayerCard>;
+	Thirty: Obs.ObservableArray<PlayerCard>;
+	Forty: Obs.ObservableArray<PlayerCard>;
+	Fifty: Obs.ObservableArray<PlayerCard>;
 }
 
 export interface Row {
-	cards: Array<Card>;
+	cards: Array<PlayerCard>;
 	owner: Player; 
 }
