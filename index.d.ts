@@ -1,22 +1,11 @@
 import Obs = require('observers');
-export const enum Player {
-	Zero,
-	One
-}
+import Enum = require('./src/enums');
 
-export const enum Command {
-	None,
-	Print,
-	Delete,
-	Enter,
-	Save,
-	IfThen
-}
+export import Command = Enum.Command;
 
-export const enum Direction {
-	Vertical,
-	Horizontal
-}
+export import Direction = Enum.Direction;
+
+export import Player = Enum.Player;
 
 export interface Card {
 	owner: Player;
@@ -31,15 +20,15 @@ export class Game {
 
 export interface Deck {
 	owner: Player;
-	cards: Array<Card>;
+	cards: Obs.ObservableArray<Card>;
 }
 
 export interface Grid {
-	Ten: Array<Card>;
-	Twenty: Array<Card>;
-	Thirty: Array<Card>;
-	Forty: Array<Card>;
-	Fifty: Array<Card>;
+	Ten: Obs.ObservableArray<Card>;
+	Twenty: Obs.ObservableArray<Card>;
+	Thirty: Obs.ObservableArray<Card>;
+	Forty: Obs.ObservableArray<Card>;
+	Fifty: Obs.ObservableArray<Card>;
 }
 
 export interface Row {
