@@ -8,4 +8,14 @@
     Command[Command["SyntaxError"] = 6] = "SyntaxError";
 })(exports.Command || (exports.Command = {}));
 var Command = exports.Command;
+(function (Player) {
+    Player[Player["Zero"] = 0] = "Zero";
+    Player[Player["One"] = 1] = "One";
+})(exports.Player || (exports.Player = {}));
+var Player = exports.Player;
+(function (Direction) {
+    Direction[Direction["Vertical"] = 0] = "Vertical";
+    Direction[Direction["Horizontal"] = 1] = "Horizontal";
+})(exports.Direction || (exports.Direction = {}));
+var Direction = exports.Direction;
 //# sourceMappingURL=enums.js.map
