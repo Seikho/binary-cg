@@ -1,6 +1,7 @@
 var Enum = require('./enums');
+var obs = require('observers');
 var Cmd = Enum.Command;
-function makeDeck(cardCount, includeCommands) {
+function makeDeck(includeCommands) {
     var cards = includeCommands
         .reduce(function (deck, card) { return deck.concat(create(card)); }, []);
     return createPlayerDecks(cards);
@@ -14,9 +15,18 @@ function createPlayerDecks(cards) {
             direction: card.direction
         };
     }; };
-    var one = cards.map(function (card) { return to(Enum.Player.One); });
-    var zero = cards.map(function (card) { return to(Enum.Player.Zero); });
-    return { one: one, zero: zero };
+    var one = cards.map(to(Enum.Player.One));
+    var zero = cards.map(to(Enum.Player.Zero));
+    return {
+        one: {
+            owner: Enum.Player.One,
+            cards: obs.observeArray(one)
+        },
+        zero: {
+            owner: Enum.Player.Zero,
+            cards: obs.observeArray(zero)
+        }
+    };
 }
 function create(command) {
     var match = commandCounts

@@ -1,9 +1,11 @@
 import CG = require('../index.d.ts');
 import Enum = require('./enums');
+import obs = require('observers');
+
 var Cmd = Enum.Command;
 export = makeDeck;
 
-function makeDeck(cardCount: number, includeCommands: Array<Enum.Command>) {
+function makeDeck(includeCommands: Array<Enum.Command>) {
 	var cards = includeCommands
 		.reduce((deck, card) => deck.concat(create(card)), []);
 
@@ -11,7 +13,7 @@ function makeDeck(cardCount: number, includeCommands: Array<Enum.Command>) {
 }
 
 function createPlayerDecks(cards: Array<CG.Card>) {
-	var to = (player: Enum.Player) => (card: CG.Card) => {
+	var to = (player: Enum.Player) => (card: CG.Card): CG.PlayerCard => {
 		return {
 			owner: player,
 			effect: null,
@@ -20,10 +22,19 @@ function createPlayerDecks(cards: Array<CG.Card>) {
 		};
 	}
 	
-	var one = cards.map(card => to(Enum.Player.One));
-	var zero = cards.map(card => to(Enum.Player.Zero));
+	var one = cards.map(to(Enum.Player.One));
+	var zero = cards.map(to(Enum.Player.Zero));
 	
-	return { one, zero };
+	return {
+		one: {
+			owner: Enum.Player.One,
+			cards: obs.observeArray(one)
+		},
+		zero: {
+			owner: Enum.Player.Zero,
+			cards: obs.observeArray(zero)
+		}
+	};
 }
 
 function create(command: Enum.Command) {
