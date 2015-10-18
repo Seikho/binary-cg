@@ -28,6 +28,6 @@
     "typescript": "^1.6.2"
   },
   "dependencies": {
-    "observers": "^0.5.1"
+    "observers": "^0.5.2"
   }
 }
