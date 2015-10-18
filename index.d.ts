@@ -24,6 +24,7 @@ export class Game {
 export interface Deck {
 	owner: Player;
 	cards: Obs.ObservableArray<PlayerCard>;
+    hand: Obs.ObservableArray<PlayerCard>;
 }
 
 export interface Grid {
