@@ -20,11 +20,13 @@ function createPlayerDecks(cards) {
     return {
         one: {
             owner: Enum.Player.One,
-            cards: obs.observeArray(one)
+            cards: obs.observeArray(one),
+            hand: obs.observeArray([])
         },
         zero: {
             owner: Enum.Player.Zero,
-            cards: obs.observeArray(zero)
+            cards: obs.observeArray(zero),
+            hand: obs.observeArray([])
         }
     };
 }
