@@ -16,8 +16,9 @@ export class Game {
 	shuffle = (deck: CG.Deck) => deck.cards.sort(() => Math.random() > Math.random() ? 1 : -1);
 	discarded = obs.observeArray<CG.PlayerCard>([]);
 
-	oneDeck: CG.Deck;
+	oneDeck: CG.Deck;    
 	zeroDeck: CG.Deck;
+    
 	grid: CG.Grid;
 
 	start = () => {
@@ -36,11 +37,15 @@ export class Game {
 		};
 		
 		var noCards = (cards: CG.PlayerCard[]) => cards.length === 0 ? this.endGame() : void 0;
-		var rowFiftyFull = (cards: CG.PlayerCardp[] => cards.length === 3) ? this.endGame() : void 0;
+		var rowFiftyFull = (cards: CG.PlayerCard[]) => cards.length === 3 ? this.endGame() : void 0;
 		this.oneDeck.cards.subscribe(noCards)
 		this.zeroDeck.cards.subscribe(noCards);
 		this.grid.Fifty.subscribe(rowFiftyFull);
 	}
+    
+    takeCard = (deck: CG.Deck) => {
+        
+    }
 	
 	endGame = () => {};
 	

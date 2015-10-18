@@ -26,12 +26,12 @@ var Game = (function () {
                 Fifty: obs.observeArray([]),
             };
             var noCards = function (cards) { return cards.length === 0 ? _this.endGame() : void 0; };
-            var rowFiftyFull = function (cards) { return cards.length === 3; };
-            _this.endGame();
-            void 0;
+            var rowFiftyFull = function (cards) { return cards.length === 3 ? _this.endGame() : void 0; };
             _this.oneDeck.cards.subscribe(noCards);
             _this.zeroDeck.cards.subscribe(noCards);
             _this.grid.Fifty.subscribe(rowFiftyFull);
+        };
+        this.takeCard = function (deck) {
         };
         this.endGame = function () { };
     }
